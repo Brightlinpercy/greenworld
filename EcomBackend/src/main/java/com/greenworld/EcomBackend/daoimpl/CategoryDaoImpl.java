@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.greenworld.EcomBackend.dao.CategoryDao;
 import com.greenworld.EcomBackend.model.Category;
-import com.greenworld.EcomBackend.model.Customer;
 
 @Transactional
 @Repository
@@ -17,6 +16,7 @@ public class CategoryDaoImpl implements CategoryDao {
 	
 @Autowired
 SessionFactory sessionFactory;
+
 	@Override
 	public boolean insertCategory(Category category) {
 	try {
@@ -41,7 +41,7 @@ SessionFactory sessionFactory;
 	public boolean deleteCategory(String categoryname) {
 		try
 		{
-			sessionFactory.getCurrentSession().delete(categoryname,Customer.class);
+			sessionFactory.getCurrentSession().delete(categoryname,Category.class);
 			return true;
 		}
 		catch (Exception e)
