@@ -45,7 +45,7 @@ public class SellerDaoImpl implements SellerDao {
 	public boolean deleteSeller(String sellername) {
 		try
 		{
-			sessionFactory.getCurrentSession().delete(sellername);
+			sessionFactory.getCurrentSession().delete(selectOneSeller(sellername));
 			return true;
 		}
 		catch (Exception e)

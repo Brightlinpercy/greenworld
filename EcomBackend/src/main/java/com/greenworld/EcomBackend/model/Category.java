@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Category {
@@ -13,9 +16,13 @@ public class Category {
 	private int categoryid;
 	
 	@Column(nullable=false,unique=true)
+	@NotEmpty(message="Category Name is Mandatory")
+	@Pattern(regexp="[a-zA-Z ]{3,255}",message="can contain only alphabets max 255char")
 	private String categoryname;
 	
 	@Column(nullable=false)
+	@NotEmpty(message="Category Description is Mandatory")
+	@Pattern(regexp="[0-9a-zA-Z ]{3,255}",message="can contain alphabets and numbers max 255char")
 	private String categorydesc;
 
 	public int getCategoryid() {

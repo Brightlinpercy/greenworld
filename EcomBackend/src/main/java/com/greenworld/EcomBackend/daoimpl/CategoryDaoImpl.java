@@ -41,7 +41,7 @@ SessionFactory sessionFactory;
 	public boolean deleteCategory(String categoryname) {
 		try
 		{
-			sessionFactory.getCurrentSession().delete(categoryname,Category.class);
+			sessionFactory.getCurrentSession().delete(selectOneCategory(categoryname));
 			return true;
 		}
 		catch (Exception e)
