@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="cr" value="${pageContext.request.contextPath}" />
+
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <style>
 body {
@@ -107,11 +109,11 @@ span.psw {
 	<div class="row">
 		<c:if test="${!editmode}">
 			<h1 class="title">Category</h1>
-			<c:set var="action" value="addcategory"></c:set>
+			<c:set var="action" value="${cr}/admin/addcategory"></c:set>
 		</c:if>
 		<c:if test="${editmode}">
 			<h1 class="title">Edit Category</h1>
-			<c:set var="action" value="updatecategory"></c:set>
+			<c:set var="action" value="${cr}/admin/updatecategory"></c:set>
 		</c:if>
 
 		<form:form class="modal-content animate" action="${action}"
@@ -151,9 +153,9 @@ span.psw {
 							<td>${cat.categoryname}</td>
 							<td>${cat.categorydesc}</td>
 							<td><a class='btn btn-info btn-xs'
-								href="editcategory?catname=${cat.categoryname}"><span
+								href="${cr}/admin/editcategory?catname=${cat.categoryname}"><span
 									class="glyphicon glyphicon-edit"></span> Edit</a> <a
-								href="deletecategory?catname=${cat.categoryname}"
+								href="${cr}/admin/deletecategory?catname=${cat.categoryname}"
 								class="btn btn-danger btn-xs"><span
 									class="glyphicon glyphicon-remove"></span> Del</a></td>
 						</tr>

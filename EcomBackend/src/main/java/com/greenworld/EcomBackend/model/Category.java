@@ -22,7 +22,7 @@ public class Category {
 	
 	@Column(nullable=false)
 	@NotEmpty(message="Category Description is Mandatory")
-	@Pattern(regexp="[0-9a-zA-Z ]{3,255}",message="can contain alphabets and numbers max 255char")
+	@Pattern(regexp="[0-9a-zA-Z ]{3,900}",message="can contain alphabets and numbers max 900char")
 	private String categorydesc;
 
 	public int getCategoryid() {

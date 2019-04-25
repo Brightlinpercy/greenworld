@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <style>
 input[type=text], input[type=password] {
 	width: 100%;
@@ -77,18 +79,18 @@ span.psw {
 	}
 }
 </style>
-
-
-
 <div class="container"style="margin-top: 2%">
-	<form class="modal-content animate" action="/action_page.php">
+<c:if test="${error}">
+		<div class="alert alert-danger" role="alert">UserName Or Password Incorrect</div>
+</c:if>
+	<form class="modal-content animate" action="perform_login" method="post">
 		<div>
 			<label for="uname"><b>Username</b></label> <input type="text"
-				placeholder="Enter Username" name="uname" required> <label
+				placeholder="Enter Username" name="user_name" required> <label
 				for="psw"><b>Password</b></label>
 		</div>
 		<div>
-			<input type="password" placeholder="Enter Password" name="psw"
+			<input type="password" placeholder="Enter Password" name="user_password"
 				required>
 		</div>
 		<div>

@@ -9,10 +9,10 @@ import com.greenworld.EcomBackend.dao.CategoryDao;
 
 @Controller
 public class HomeController {
-	
+
 	@Autowired
 	CategoryDao catdao;
-	
+
 	@RequestMapping(value = { "/", "/index" })
 	String sliderPage(Model model) {
 		model.addAttribute("sliderPage", true);
@@ -33,19 +33,5 @@ public class HomeController {
 
 	}
 
-	@RequestMapping("/login")
-	String loginPage(Model model) {
-		model.addAttribute("loginPage", true);
-		return "index";
 
-	}
-
-	@RequestMapping("/register")
-	String registerPage(Model model) {
-		model.addAttribute("registerPage", true);
-		return "index";
-	}
-
-	
-	
 }

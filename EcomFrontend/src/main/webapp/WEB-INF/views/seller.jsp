@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<c:set var="cr" value="${pageContext.request.contextPath}" />
+
 <style>
 body {
 	font-family: Arial, Helvetica, sans-serif;
@@ -96,24 +98,36 @@ span.psw {
 	transition: 0.5s;
 }
 </style>
+<script>
+	// Get the modal
+	var modal = document.getElementById('id01');
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
+</script>
 <div class="container" style="margin-top: 2%">
 	<c:if test="${success}">
-		<div class="alert alert-success" role="alert">Inserted
-			Successfully</div>
+		<div class="alert alert-success" role="alert">Transaction
+			Successful</div>
 	</c:if>
 	<c:if test="${error}">
 		<div class="alert alert-danger" role="alert">${message}</div>
 	</c:if>
-	
-		<div class="row">
-			<c:if test="${!editmode}">
-				<h1 class="title">Seller</h1>
-				<c:set var="action" value="addseller"></c:set>
-			</c:if>
-			<c:if test="${editmode}">
-				<h1 class="title">Edit Seller</h1>
-				<c:set var="action" value="updateseller"></c:set>
-			</c:if>
+
+	<div class="row">
+		<c:if test="${!editmode}">
+			<h1 class="title">Seller</h1>
+			<c:set var="action" value="${cr}/admin/addseller"></c:set>
+		</c:if>
+		<c:if test="${editmode}">
+			<h1 class="title">Edit Seller</h1>
+			<c:set var="action" value="${cr}/admin/updateseller"></c:set>
+		</c:if>
+		<div class="container">
 			<form:form class="modal-content animate" action="${action}"
 				modelAttribute="selobject">
 				<c:if test="${editmode}">
@@ -123,60 +137,50 @@ span.psw {
 				<form:input type="text" placeholder="Enter Sellername" name="uname"
 					path="sellername" />
 				<form:errors path="sellername" cssStyle="color:Red"></form:errors>
-				<label for="cat"><b>Seller Description</b></label>
+				<label for="sel"><b>Seller Description</b></label>
 				<form:textarea name="text" id="" rows="8"
 					placeholder="Enter description" path="sellerdesc" />
 				<form:errors path="sellerdesc" cssStyle="color:Red"></form:errors>
 
 				<button type="submit">Submit</button>
 			</form:form>
-
-		</div>
-		<div class="row">
-			<div class="col-lg-12">
-				<table class="table table-striped custab">
-					<thead>
-
-						<tr>
-							<th>SELLER ID</th>
-							<th>SELLER NAME</th>
-							<th>SELLER DESCRIPTION</th>
-							<th class="text-center">EDIT/DELETE</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${sellerlist}" var="sel">
-							<tr>
-								<td>${sel.sellerid}</td>
-								<td>${sel.sellername}</td>
-								<td>${sel.sellerdesc}</td>
-								<td><a class='btn btn-info btn-xs'
-									href="editseller?selname=${sel.sellername}"><span
-										class="glyphicon glyphicon-edit"></span> Edit</a> <a
-									href="deleteseller?selname=${sel.sellername}"
-									class="btn btn-danger btn-xs"><span
-										class="glyphicon glyphicon-remove"></span> Del</a></td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
-
-
 		</div>
 	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<table class="table table-striped custab">
+				<thead>
 
-	<script>
-		// Get the modal
-		var modal = document.getElementById('id01');
+					<tr>
+						<th>SELLER ID</th>
+						<th>SELLER NAME</th>
+						<th>SELLER DESCRIPTION</th>
+						<th class="text-center">EDIT/DELETE</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${sellerlist}" var="sel">
+						<tr>
+							<td>${sel.sellerid}</td>
+							<td>${sel.sellername}</td>
+							<td>${sel.sellerdesc}</td>
+							<td><a class='btn btn-info btn-xs'
+								href="${cr}/admin/editseller?selname=${sel.sellername}"><span
+									class="glyphicon glyphicon-edit"></span> Edit</a> <a
+								href="${cr}/admin/deleteseller?selname=${sel.sellername}"
+								class="btn btn-danger btn-xs"><span
+									class="glyphicon glyphicon-remove"></span> Del</a></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
 
-		// When the user clicks anywhere outside of the modal, close it
-		window.onclick = function(event) {
-			if (event.target == modal) {
-				modal.style.display = "none";
-			}
-		}
-	</script>
 
-	</body>
-	</html>
+	</div>
+</div>
+
+
+
+</body>
+</html>

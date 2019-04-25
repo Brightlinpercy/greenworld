@@ -21,7 +21,6 @@ public class SellerDaoImpl implements SellerDao {
 		try {
 			UserCred uc=new UserCred();
 			uc.setUsername(seller.getSellername());
-			uc.setPassword(seller.getSellerpassword());
 			uc.setRole("ROLE_SELLER");
 			uc.setStatus(false);
 			sessionFactory.getCurrentSession().save(seller);

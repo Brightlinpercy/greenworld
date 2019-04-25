@@ -1,1 +1,5 @@
+com\greenworld\EcomFrontend\Controller\ProductController.class
+com\greenworld\EcomFrontend\Controller\CategoryController.class
 com\greenworld\EcomFrontend\Controller\HomeController.class
+com\greenworld\EcomFrontend\Controller\CustomerRegisterController.class
+com\greenworld\EcomFrontend\Controller\SellerController.class

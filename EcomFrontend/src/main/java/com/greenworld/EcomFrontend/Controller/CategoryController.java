@@ -14,6 +14,7 @@ import com.greenworld.EcomBackend.dao.CategoryDao;
 import com.greenworld.EcomBackend.model.Category;
 
 @Controller
+@RequestMapping("/admin")
 public class CategoryController {
 	@Autowired
 	CategoryDao catdao;

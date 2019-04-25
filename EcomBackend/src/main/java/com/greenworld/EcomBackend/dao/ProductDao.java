@@ -10,5 +10,7 @@ boolean insertProduct(Product product);
 boolean updateProduct(Product product);
 boolean deleteProduct(int productid);
 List<Product>selectAllProducts();
-Product selectOneProduct(int productid);
+List<Product>selectCatProducts(int id);
+Product selectOneProduct(int productid);			
+
 }
