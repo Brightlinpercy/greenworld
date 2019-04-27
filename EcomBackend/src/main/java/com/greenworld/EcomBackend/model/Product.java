@@ -36,6 +36,10 @@ public class Product {
 	@ManyToOne
 	private Seller productseller;
 
+	
+	
+	
+
 	@Column(nullable = false)
 	@Min(value = 5)
 	@Max(value = 100)
@@ -113,4 +117,5 @@ public class Product {
 		this.price = price;
 	}
 
+	
 }
