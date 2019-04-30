@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Customer {
@@ -14,15 +17,20 @@ public class Customer {
 	private int customerid;
 	
 	@Column(nullable=false)
+	@NotEmpty(message="UserName is Mandatory")
+	@Pattern(regexp="[a-zA-Z ]{3,20}",message="can contain only alphabets")
 	private String customername;
 	
 	@Column(nullable=false,unique=true)
+	@Pattern(regexp="^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$",message="invalid mail-id")
 	private String customermailid;
 	
 	@Column(nullable=false,unique=true)
+	@Pattern(regexp="^([987]{1})([0-9]{9})$",message="contact number can have only 10 digits")
 	private String phoneno;
 	
 	@Transient
+	
 	private String password;
 
 	public int getCustomerid() {

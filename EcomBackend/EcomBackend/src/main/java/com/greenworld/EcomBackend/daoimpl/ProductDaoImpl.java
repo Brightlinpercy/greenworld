@@ -41,7 +41,7 @@ public class ProductDaoImpl implements ProductDao {
 	public boolean deleteProduct(int productid) {
 		try
 		{
-			sessionFactory.getCurrentSession().delete(productid);
+			sessionFactory.getCurrentSession().delete(selectOneProduct(productid));
 			return true;
 		}
 		catch (Exception e)
@@ -58,11 +58,21 @@ public class ProductDaoImpl implements ProductDao {
 		return null;
 		}}
 	
+	@Override
+	public List<Product> selectCatProducts(int id) {
+		try {
+			return sessionFactory.getCurrentSession().createQuery("from Product where productcategory="+id).list();
+		}
+		catch (Exception e) {
+			
+		return null;
+		}}
+	
 
 	@Override
 	public Product selectOneProduct(int productid) {
 		try {
-			return (Product)sessionFactory.getCurrentSession().createQuery("from Product where productid='"+productid+"'").uniqueResult();
+			return (Product)sessionFactory.getCurrentSession().createQuery("from Product where productid="+productid).uniqueResult();
 		}
 		catch (Exception e) 
 		{

@@ -23,11 +23,10 @@ public class Seller
 
 	@Column(nullable=false)
 	@NotEmpty(message="Seller Description is Mandatory")
-	@Pattern(regexp="[0-9a-zA-Z ]{3,255}",message="can contain alphabets and numbers max 255char")
+	@Pattern(regexp="[0-9a-zA-Z ]{3,900}",message="can contain alphabets and numbers max 900char")
 	private String sellerdesc;
 	
-	@Transient
-	private String sellerpassword;
+	
 	
 public int getSellerid() {
 		return sellerid;
@@ -53,13 +52,7 @@ public int getSellerid() {
 		this.sellerdesc = sellerdesc;
 	}
 
-	public String getSellerpassword() {
-		return sellerpassword;
-	}
-
-	public void setSellerpassword(String sellerpassword) {
-		this.sellerpassword = sellerpassword;
-	}
+	
 	
 }
 	

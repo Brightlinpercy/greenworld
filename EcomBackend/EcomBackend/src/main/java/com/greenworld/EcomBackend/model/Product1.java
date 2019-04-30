@@ -19,7 +19,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
 @Entity
-public class Product {
+public class Product1 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int productid;
@@ -34,9 +34,11 @@ public class Product {
 	private String productdesc;
 
 	@ManyToOne
+	@OnDelete(action=OnDeleteAction.CASCADE)
 	private Category productcategory;
 
 	@ManyToOne
+	@OnDelete(action=OnDeleteAction.CASCADE)
 	private Seller productseller;
 
 	

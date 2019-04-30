@@ -24,8 +24,9 @@ SessionFactory sessionFactory;
 			uc.setUsername(customer.getCustomermailid());
 			uc.setPassword(customer.getPassword());
 			uc.setRole("ROLE_CUSTOMER");
-			uc.setStatus(false);
+			uc.setStatus(true);
 			sessionFactory.getCurrentSession().save(customer);
+			sessionFactory.getCurrentSession().save(uc);
 			return true;
 		}
 		catch (Exception e)
